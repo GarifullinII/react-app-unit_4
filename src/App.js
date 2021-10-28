@@ -10,8 +10,9 @@ function App() {
   function task1() {
       console.log('task2');
   }
-  function task2() {
-      task2Val.current.classList.add('active');
+  function task2(event) {
+      // task2Val.current.classList.add('active');
+      event.target.classList.add('active');
   }
   function task3() {
 
