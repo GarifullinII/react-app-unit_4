@@ -1,16 +1,17 @@
 import './App.css';
-import React from 'react';
+import React, {useRef} from 'react';
 import { useState } from 'react';
 
 
 function App() {
   let count4 = 0;
+  const task2Val = useRef();
 
   function task1() {
-
+      console.log('task2');
   }
   function task2() {
-
+      task2Val.current.classList.add('active');
   }
   function task3() {
 
@@ -43,11 +44,11 @@ function App() {
       <h1>События</h1>
       <section>
         <h2>Task 1</h2>
-        <button className="task-1">Push</button>
+        <button className="task-1" onClick={task1}>Push</button>
       </section>
       <section>
         <h2>Task 2</h2>
-        <div className="task-2"></div>
+        <div className="task-2" onMouseEnter={task2} ref={task2Val}></div>
       </section>
       <section>
         <h2>Task 3</h2>
