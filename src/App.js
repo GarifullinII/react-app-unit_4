@@ -11,11 +11,11 @@ function App() {
       console.log('task2');
   }
   function task2(event) {
-      // task2Val.current.classList.add('active');
-      event.target.classList.add('active');
+      task2Val.current.classList.add('active');
+      // event.target.classList.add('active');
   }
-  function task3() {
-
+  function task3(event) {
+      console.log(event.target.value);
   }
   function task4() {
 
@@ -53,7 +53,7 @@ function App() {
       </section>
       <section>
         <h2>Task 3</h2>
-        <input type="text" className="task-3" />
+        <input type="text" className="task-3" onInput={task3}/>
       </section>
       <section>
         <h2>Task 4</h2>
