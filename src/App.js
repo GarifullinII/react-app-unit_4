@@ -7,6 +7,7 @@ function App() {
   let count4 = 0;
   const task2Val = useRef();
   const task4Val = useRef();
+  const text5div = useRef();
 
   function task1() {
       console.log('task2');
@@ -23,8 +24,12 @@ function App() {
       task4Val.current.value = count4;
       console.log(count4)
   }
-  function task5() {
-
+  function task5(event) {
+      if (event.target.checked) {
+          text5div.current.innerHTML = event.target.value;
+      } else {
+          text5div.current.innerHTML = 0;
+      }
   }
   function task6() {
 
@@ -64,8 +69,8 @@ function App() {
       </section>
       <section>
         <h2>Task 5</h2>
-        <input type="checkbox" currentValue="55" />
-        <div className="out-5"></div>
+        <input type="checkbox" value="55" onChange={task5}/>
+        <div className="out-5" ref={text5div}></div>
       </section>
       <section>
         <h2>Task 6</h2>
