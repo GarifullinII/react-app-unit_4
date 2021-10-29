@@ -6,6 +6,7 @@ import { useState } from 'react';
 function App() {
   let count4 = 0;
   const task2Val = useRef();
+  const task4Val = useRef();
 
   function task1() {
       console.log('task2');
@@ -18,7 +19,9 @@ function App() {
       console.log(event.target.value);
   }
   function task4() {
-
+      count4++;
+      task4Val.current.value = count4;
+      console.log(count4)
   }
   function task5() {
 
@@ -57,7 +60,7 @@ function App() {
       </section>
       <section>
         <h2>Task 4</h2>
-        <button className="task-4">Count</button>
+        <button className="task-4" onClick={task4} ref={task4Val}>Count</button>
       </section>
       <section>
         <h2>Task 5</h2>
