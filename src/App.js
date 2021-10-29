@@ -8,6 +8,8 @@ function App() {
   const task2Val = useRef();
   const task4Val = useRef();
   const text5div = useRef();
+  const text6div = useRef();
+  const colorTask7 = useRef();
 
   function task1() {
       console.log('task2');
@@ -31,11 +33,17 @@ function App() {
           text5div.current.innerHTML = 0;
       }
   }
-  function task6() {
-
+  function task6(event) {
+          text6div.current.innerHTML = event.target.value;
   }
-  function task7() {
 
+  function randomInt(a = 0, b = 255) {
+        let rand = a + Math.random() * (b + 1 - a);
+        return Math.round(rand);
+  }
+
+  function task7() {
+      colorTask7.current.style.background = `rgb(${randomInt()},${randomInt()},${randomInt()})`;
   }
   function task8() {
 
@@ -74,17 +82,18 @@ function App() {
       </section>
       <section>
         <h2>Task 6</h2>
-        <select className="task-6">
+        <select className="task-6" onChange={task6}>
           <option value="7">seven</option>
           <option value="4">four</option>
           <option value="9">nine</option>
           <option value="10">ten</option>
         </select>
+        <div className="out-6" ref={text6div}></div>
       </section>
       <section>
         <h2>Task 7</h2>
-        <div className="block-7"></div>
-        <button className="task-7">Color</button>
+        <div className="block-7" ref={colorTask7}></div>
+        <button className="task-7" onClick={task7}>Color</button>
       </section>
       <section>
         <h2>Task 8</h2>
