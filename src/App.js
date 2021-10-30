@@ -10,6 +10,11 @@ function App() {
   const text5div = useRef();
   const text6div = useRef();
   const colorTask7 = useRef();
+  const text8div = useRef();
+  const text9div = useRef();
+  const range = useRef();
+  const number = useRef();
+
 
   function task1() {
       console.log('task2');
@@ -36,24 +41,27 @@ function App() {
   function task6(event) {
           text6div.current.innerHTML = event.target.value;
   }
-
   function randomInt(a = 0, b = 255) {
         let rand = a + Math.random() * (b + 1 - a);
         return Math.round(rand);
   }
-
   function task7() {
       colorTask7.current.style.background = `rgb(${randomInt()},${randomInt()},${randomInt()})`;
   }
-  function task8() {
-
+  function task8(event) {
+      if (!isNaN(+event.key)) {
+          text8div.current.textContent += 1;
+      } else {
+          text8div.current.textContent += 0;
+      }
   }
   function task9() {
-
+      text9div.current.innerHTML = range.current.value;
   }
   let ar10 = [5, 6, 7];
   function task10() {
-
+      ar10.push(number.current.value);
+      console.log(ar10);
   }
 
   return (
@@ -97,18 +105,18 @@ function App() {
       </section>
       <section>
         <h2>Task 8</h2>
-        <input type="text" className="task-8"></input>
-        <div className="out-8"></div>
+        <input type="text" className="task-8" onKeyPress={task8}></input>
+        <div className="out-8" ref={text8div}></div>
       </section>
       <section>
         <h2>Task 9</h2>
-        <input type="range" className="task-9"></input>
-        <div className="out-9"></div>
+        <input type="range" ref={range} onInput={task9}></input>
+        <div className="out-9" ref={text9div}></div>
       </section>
       <section>
         <h2>Task 10</h2>
-        <input type="number" className="i-10"></input>
-        <button className="task-10">Push</button>
+        <input type="number" className="i-10" ref={number}></input>
+        <button className="task-10" onClick={task10}>Push</button>
       </section>
     </>
   );
